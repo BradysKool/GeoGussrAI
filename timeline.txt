@@ -1,0 +1,84 @@
+Day 1: Made function to take full image screenshot of the location.
+        worked on a way to verify if guess was correct or not with OCR.
+
+Day 2: didnt have much time but finished way to confime the corrcet county for the location.
+        also started to create reward functions:
+        made function to check if guess was in correct continent as well as to check if correct county is boarding guess
+
+Day 3: Started to work on funciton for AI to put in guess. This is gonna take a while-
+
+Day 4:Finished function for AI to put in its guess. Just collected the exact cords that each contry appeared on the screen
+
+Day 5: Spent the day testing all of the funcitons I made to make sure there will be no problems down the road.
+        Also research ways to make the model and decided to start building it in tensorflow.
+        I soon ran into problems with Cuda compatibilty so decited to scrap it and start using Pytorch instead
+
+Day 6: Wrote code for the RL model in Pytorch taking insparation from one of my previos problems and spent some time relearnig the framework a little.
+        Ran into some issues with the dimentions of the weights of the models in my torchModle.py file.
+        Spent around 30 minutes debugging and finaly realising that I misscalculated the final dimentions of the image.
+        After that I tested the script and imeditly ran into an issue of the model tring to evalute the prediciton before the model even guesss the country
+        Will try to make checkmarks to make sure the function is fully compleated before running the rest of the script.
+
+Day 7: 
+        Fixed issue of one funciton running before I wanted it with some simple time.weights.
+        Debugged some more errors around how the script gusses.
+        Debugged some errors with the backpropagation- I overused with torch.no_grad()
+        Able to get the entire script working so will run it overnight training it on 3,000 locations may be too small but we will see 
+        A few guess into the training it seems to have broke down and I will fix it tmr.
+
+Day 8: 
+        I discovered that if the game broke I forgot to have a check that will press play again to get a new location.
+        The biggest error was that if the name of the country was move than one word like "new zealand" it was unable to get the name.
+        This second error eneded up being very hard to solve and I was unable to solve it today will try again tommarow. 
+        During this I also found that I was missing a few countrys in my countrys list so had to go back and update that in all of the places
+
+Day 9:
+        Starting working on the errors I identifed in Day 8.
+        Finished that function after 2 hours as I had to rewrite the whole fuction a completey diffrent way
+        Ran through 100 interations of the training and made a few tweaks to the error handling but overall it worked quite well
+        Made a testing function so that I could import the trained modle and use it to make a gusse on locations.
+        Made some final touches on the script.
+        trained for an hour or two but stoped as it was only gusseing one country and no longer learing. 
+        Will update this algo tmr so that it using a diffrent function to promote learing at the start of the trainig.
+
+Day 10:
+        When testing my algoritham I realized that it was just gussing India every single time.
+        This is probibly due to the lack of trainig data and huge complexity of the task.
+        Becaues I do not have the time and resorces to train a huge amount of data I will instead fine tune a pre made model
+        Spent the rest of my time today reading up on diffrent pre-trained models as well as how to implement them.
+
+Day 11:
+        Chose to use the CLIP(Contrastive Language-Image Pre-training) pretrained model and fintune it to this case.
+        Worked on how to process the image so that it will be able to be used by the model as well.
+        Becaues CLIP is mostly used to compare large amounts of photos in a data set I learn that I will have to manuly add a finall layer to the Clip model so that I can train it.
+        
+Day 12:
+        I spent the beinging of today finishing the implemtaiton of the CLIP pretrained model.
+        I then started to train it but I was still running into the same problem where the model would only gusse 1 contry the whole time
+        To combat this I looked into diffent reward systems and loss algorithams
+        I learned about using a baseline with the reward to increase more stabilty in the algoritham ie dosent converge to one country
+        Also worked on making a function that calucates the distance based on pixels from the country I gussed and the correct country so that I can use this for a better reward function.
+        
+Day 13:
+        Finished the distance function and starting traing.
+        i still ran into the same issue of only gussing the same country every time and then I finaly remebered that I need to allow for exploration at the very start.
+        To do this I implemented a tempature system so that there is a lot of exploration at the start so it will be able to learn.
+        I started traing again but then I ran into an issue of not being able to use my geogussr account any more, I think i got blocked
+
+Day 14:
+        Because I can no longer train on geogussr I am going to try to obtain a premade data set of street view photos and the contry they where taking in.
+        I spent the rest of the day dowloading the dataset and implementing it
+        I decided to train the model overnight with 1/4th an epoch which is expected to take about 10 hours.
+
+Day 15: 
+        I came back and the training seem to work now I will test it with real locations
+        After some testing i can say it's working perfecitly and preforming way better than I thought it would.
+
+Day 16:
+        I did some more testing and even did a 1v1 agaist my model to collect some data on how it prefromes in geogussr
+        For the 1v1 me and the bot where both given 100 still images and whoever could gusse the most correct countrys outta the 100 would win.
+        After the first 1v1 Brady: 37, geoBot: 31
+        Very close scroe but to acheve my goal I will train it again tonight with 1/2 epoch(about 20 hours) to hopfully impove and beat me tommorow.
+
+Day 17: 
+        After the 20 hours of traning I tested the model and it beat my score!
