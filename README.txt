@@ -4,6 +4,8 @@ Outcome: The bot beat me and can get around 45% of its gusses correct
 for clarficication this model will be feed one screenshot of some locaiton on google streatview and it has to gusse the contry that it was taken
 I am also in top 1% of geogussr players so beating me is quite impressive
 
+Check timeline.txt for the work that was done each day. 
+
 There where 3 verisons to the model:
 V1- This version had torchModel.py and traning.py as the model and traing algoritham respectivly.
 
@@ -25,6 +27,7 @@ Updates: In this model I am now using a data set to greatly increase the speed a
 I also updated the reward function to take full advatage of the millions of images that it had.
 
 Limitations: This data set did not include any of the new countrys that where added to geogussr like Namiba and Costa Rica so it got these wrong everytime
+
 
 
 future goals: I want to tweak the model and add some of my own data so that I can get the accurcy up to 75%
