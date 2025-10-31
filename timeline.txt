@@ -81,4 +81,5 @@ Day 16:
         Very close scroe but to acheve my goal I will train it again tonight with 1/2 epoch(about 20 hours) to hopfully impove and beat me tommorow.
 
 Day 17: 
+
         After the 20 hours of traning I tested the model and it beat my score!
